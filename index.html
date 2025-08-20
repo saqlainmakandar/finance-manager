@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartMoney Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div id="loginContainer" class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <i class="fas fa-wallet"></i>
+                <h1>SmartMoney Manager</h1>
+                <p>Take control of your finances</p>
+            </div>
+            <form id="loginForm" class="login-form">
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="email" id="loginEmail" placeholder="Email" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="loginPassword" placeholder="Password" required>
+                </div>
+                <button type="submit" class="login-btn">Login</button>
+                <p class="register-text">Don't have an account? <a href="#" id="showRegister">Register</a></p>
+            </form>
+        </div>
+    </div>
+
+    <div id="registerContainer" class="login-container hidden">
+        <div class="login-card">
+            <div class="login-header">
+                <i class="fas fa-user-plus"></i>
+                <h1>Create Account</h1>
+                <p>Join SmartMoney Manager today</p>
+            </div>
+            <form id="registerForm" class="login-form">
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="registerName" placeholder="Full Name" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="registerEmail" placeholder="Email" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="registerPassword" placeholder="Password" required>
+                </div>
+                <button type="submit" class="login-btn">Register</button>
+                <p class="register-text">Already have an account? <a href="#" id="showLogin">Login</a></p>
+            </form>
+        </div>
+    </div>
+
+    <div id="appContainer" class="app-container hidden">
+        <header>
+            <div class="header-top">
+                <h1><i class="fas fa-wallet"></i> SmartMoney Manager</h1>
+                <button id="logoutBtn" class="btn logout"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+            <div class="balance-card">
+                <h2>Total Balance</h2>
+                <p id="totalBalance">$0.00</p>
+                <div class="balance-stats">
+                    <div class="stat">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>Income</span>
+                        <span id="totalIncome">$0.00</span>
+                    </div>
+                    <div class="stat">
+                        <i class="fas fa-arrow-down"></i>
+                        <span>Expenses</span>
+                        <span id="totalExpenses">$0.00</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="quick-actions">
+                <button id="addIncomeBtn" class="btn income"><i class="fas fa-plus"></i> Add Income</button>
+                <button id="addExpenseBtn" class="btn expense"><i class="fas fa-minus"></i> Add Expense</button>
+            </section>
+
+            <section class="savings-goals">
+                <h2><i class="fas fa-bullseye"></i> Savings Goals</h2>
+                <div class="goals-container">
+                    <div class="goal-input">
+                        <input type="text" id="goalName" placeholder="Goal name">
+                        <input type="number" id="goalAmount" placeholder="Amount">
+                        <button id="addGoalBtn" class="btn"><i class="fas fa-plus"></i> Add Goal</button>
+                    </div>
+                    <div id="goalsList" class="goals-list"></div>
+                </div>
+            </section>
+
+            <section class="transactions">
+                <h2><i class="fas fa-exchange-alt"></i> Recent Transactions</h2>
+                <div class="transaction-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="income">Income</button>
+                    <button class="filter-btn" data-filter="expense">Expenses</button>
+                </div>
+                <div id="transactionsList" class="transactions-list"></div>
+            </section>
+        </main>
+    </div>
+
+    <div id="transactionModal" class="modal">
+        <div class="modal-content">
+            <h2 id="modalTitle">Add Transaction</h2>
+            <form id="transactionForm">
+                <input type="text" id="description" placeholder="Description" required>
+                <input type="number" id="amount" placeholder="Amount" step="0.01" required>
+                <select id="category" required>
+                    <option value="">Select Category</option>
+                    <option value="salary">Salary</option>
+                    <option value="food">Food</option>
+                    <option value="transport">Transport</option>
+                    <option value="entertainment">Entertainment</option>
+                    <option value="shopping">Shopping</option>
+                    <option value="utilities">Utilities</option>
+                    <option value="other">Other</option>
+                </select>
+                <button type="submit" class="btn">Save</button>
+                <button type="button" class="btn cancel" id="closeModal">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
